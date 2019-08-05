@@ -10,16 +10,16 @@
 下载对应版本的虚拟机和镜像。如果没有开启`VT-d`, 需要进入`BIOS`开启。
 
 #### 导入虚拟机
-1. 解压下载好的镜像, 点击ovf文件![](./assets/1.png)
-2. 最低配置为6GB内存，2CPU![](./assets/2.png)
+1. 解压下载好的镜像, 点击ovf文件![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/1.png)
+2. 最低配置为6GB内存，2CPU![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/2.png)
 3. 导入镜像，开机。系统的性能此过程可能持续5~30分钟
 4. 开机完成会自动打开Firefox浏览器
 
 #### 启动Eclipse
-1. 打开`eclipse`，新建`Project`, 选择`Maven Project`![](./assets/3.png)
-2. 点击`Next`![](./assets/4.png)![](./assets/5.png)
-3. `Group Id`和`Artifact Id` 随意填写，点击`Finish`，创建项目![](./assets/6.png)
-4. 在新建的项目中，修改`pom.xml`![](./assets/7.png)
+1. 打开`eclipse`，新建`Project`, 选择`Maven Project`![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/3.png)
+2. 点击`Next`![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/4.png)![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/5.png)
+3. `Group Id`和`Artifact Id` 随意填写，点击`Finish`，创建项目![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/6.png)
+4. 在新建的项目中，修改`pom.xml`![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/7.png)
 5. 在`pom.xml`中添加`dependency`
 ```xml
 <dependency>
@@ -33,8 +33,8 @@
   <version>2.7.2</version>
 </dependency>
 ```
-6. **保存**之后`Maven`将自动引入依赖文件![](./assets/8.png)
-7. 从`src`中删除自动生成的`App.java`文件，新建`MapReduce`程序![](./assets/9.png)
+6. **保存**之后`Maven`将自动引入依赖文件![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/8.png)
+7. 从`src`中删除自动生成的`App.java`文件，新建`MapReduce`程序![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/9.png)
 
 #### 代码
 在项目目录下新建`input/`文件夹，在该文件夹下新建`data.txt`文件。`data.txt`写入输入样本，如：
@@ -99,6 +99,6 @@ public class WordCount {
 ```
 
 #### 执行
-1. 点击`Run`按钮，修改`Configuration`，确保`Project`和`Main Class`正确![](./assets/10.png)
-2. 修改`Argument`, 点击`Run`![](./assets11.png)
+1. 点击`Run`按钮，修改`Configuration`，确保`Project`和`Main Class`正确![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/10.png)
+2. 修改`Argument`, 点击`Run`![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/11.png)
 3. 在`output`路径下查看输出
