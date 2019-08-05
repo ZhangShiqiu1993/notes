@@ -12,13 +12,13 @@ HDFS是Hadoop分布式文件系统的简称，特点：
 |Peer-to-Peer|N台机器相互通信，互为备份|任何结点宕机都不影响工作|机器之间经常需要通讯，保持一致性|
 |Master Slave（工业界90%采用此设计）|1组机器负责管理，余下负责运算|结构简单；数据很容易保持一致|Master宕机，单点故障|
 
-![P2P](./assets/1.jpg)
-![Master Slave](./assets/2.jpg)
+![P2P](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/1.jpg)
+![Master Slave](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/2.jpg)
 
 HDFS采取Master-Slave结构
 
 ## HDFS 组件
-![hdfs](./assets/3.jpg)
+![hdfs](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/3.jpg)
 
 1. Client: 负责与HDFS通信
 2. NameNode
@@ -42,10 +42,10 @@ HDFS采取Master-Slave结构
 1. client向namenode发送读数据请求
 2. namenode将datanode信息发给client
 3. client从datanode下载数据
-![client reading data from HDFS](./assets/5.jpg)
+![client reading data from HDFS](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/5.jpg)
 
 HDFS会自动根据距离选取最近的数据源。距离从近到远：**同一机器 < 同一机架 < 同一数据中心 < 不同数据中心**
-![network distance in Hadoop](./assets/6.jpg)
+![network distance in Hadoop](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/6.jpg)
 
 
 ## HDFS写文件
@@ -55,10 +55,10 @@ HDFS会自动根据距离选取最近的数据源。距离从近到远：**同�
 3. datanode 自动完成副本备份
 4. datanode 完成后向namenode汇报
 5. namenode向client发送通知
-![client writing data to HDFS](./assets/7.jpg)
+![client writing data to HDFS](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/7.jpg)
 
 数据多副本备份又datanode自行完成。一个典型的复制流程是：namenode向附近的datanode_1写入第一份数据，datanode_1自动向不同机架的datanode_2复制出第二份数据。datanode_2自动寻找可用的datanode_3, 向datanode_3复制出第三份数据。
-![replica pipeline](./assets/8.jpg)
+![replica pipeline](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/6.%20HDFS/assets/8.jpg)
 
 
 ## HDFS指令
