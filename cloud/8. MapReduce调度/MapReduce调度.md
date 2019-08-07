@@ -29,7 +29,7 @@
 > Map任务的结果不会立刻写入磁盘，而是写到一个叫**环形内存缓冲区**的地方（这个操作叫`spill`）。`spill`的时候，会根据key进行分区`(partition)`。缓冲区默认最大是`100M`，当写入达到阈值(默认是`80%`)的时候，会启动一个线程将缓冲区文件写到磁盘临时文件。而这个线程会执行一个排序`(sort)`和一个合并`(combine)`操作。整个spill执行完之后，会对所有临时文件进行归并`(merge)`。`merge`时会继续进行`sort`和`combine`来减少最终输出大小。<br>
 > 上面这段流程就是`map`端的`shuffle`操作，里面的`combine`是可选的，部分情况下其实执行的是`reduce`。
 
-![](./assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/8.%20MapReduce%E8%B0%83%E5%BA%A6/assets/1.png)
 
 所以，`spill`时首先进行`partition`，然后`partition`内`sort`、`combine`，最后写出到磁盘。而`combine`可以是`reduce`，所以`Map`和`Reduce`之间不存在`Barrier`。
 
@@ -41,20 +41,20 @@
 > 如果服务器有4个CPU和4GB内存，而每个容器中有一个CPU和1GB的RAM。那么这个服务器有4个容器，可以运行四个任务。
 
 YARN有三个主要部分：
-+ Resource Manager 资源管理器 `RM`
-    + Resource Manager是全局进程
++ `Resource Manager` 资源管理器 `RM`
+    + `Resource Manager`是全局进程
     + 负责调度
-+ Node Manager 节点管理器 `NM`
-    + Node Manager在每个server都有一个
++ `Node Manager` 节点管理器 `NM`
+    + `Node Manager`在每个`server`都有一个
     + 作为守护进程和运行特定服务器进程（比如，任务监控）
-+ Application Master 应用管理`AM`
-    + 应用级别 per-application(job)
-    + 负责container与`Resource Manager`、`Node Manager`之间协商通信
++ `Application Master` 应用管理`AM`
+    + 应用级别 `per-application(job)`
+    + 负责`container`与`Resource Manager`、`Node Manager`之间协商通信
     + 与`Node Manager`通信，检测任务挂起和重新调度
 
-#### YARN分配container
+#### `YARN`分配`container`
 
-![](./assets/2.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/8.%20MapReduce%E8%B0%83%E5%BA%A6/assets/2.png)
 
 两台服务器A、B：每个服务器有一个`Node Manager`在运行<br>
 两个任务1、2：每个任务有一个`Application Master`<br>
