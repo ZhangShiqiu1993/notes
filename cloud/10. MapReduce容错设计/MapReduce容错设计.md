@@ -6,7 +6,7 @@
 + `Application Master`向`Resource Manager`发送心跳包。一旦心跳停止，`Resource Manager`重启`Application Master`，`Application Master`同步执行中任务的信息
 
 #### `Resource Manager`容错设计
-+ 使用旧的`checkpoints`，启动`secondary Resource Manager`
++ 使用旧的存档点(`checkpoints`)，启动`secondary Resource Manager`
 
 *为了避免消息传输在网络中消耗过多的资源，`container`分配请求是通过心跳包传输的的*
 
