@@ -98,6 +98,21 @@ public class WordCount {
 }
 ```
 
+#### 可序列化对象
+
+为了方便数据在网络中传输，`MapReduce`提供了对应java基本类型的**可序列化对象**。
+
+|可序列化对象类|描述|java 基本类型 / 类|
+|--|--|--|
+|BooleanWritable|布尔型数值|boolean|
+|ByteWritable|单字节数值|byte / char|
+|DoubleWritable|双字节数|double|
+|FloatWritable|浮点数|float|
+|IntWritable|整型数|int|
+|LongWritable|长整型数|long|
+|Text|使用UTF8格式存储的文本|String|
+|NullWritable|当`<key,value>`中的`key`或`value`为空时使用|null|
+
 #### 执行
 1. 点击`Run`按钮，修改`Configuration`，确保`Project`和`Main Class`正确![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/10.png)
 2. 修改`Argument`, 点击`Run`![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/5.%20Word%20Count/assets/11.png)
