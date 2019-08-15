@@ -21,7 +21,7 @@
 
 #### 集中式解决方案
 
-![](./assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/11.%E7%BB%84%E6%92%AD/assets/1.png)
 
 `centralized`是最简单的解决方案。`sender`通过`for/while loop`向所有`receiver`发送信息。
 
@@ -34,7 +34,7 @@
 为了解决上述两个问题，于是有了`tree-based`方案
 (e.g. IP组播, SRM, RMTP, TRAM, TMTP)
 
-![](./assets/3.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/11.%E7%BB%84%E6%92%AD/assets/2.png)
 
 如果树足够平衡，那么树的高度应该是`O(log n)`, 并且子节点为常数。
 对于云来说，故障是常态，所以树需要额外的固定开销来持续维护/修复树。
