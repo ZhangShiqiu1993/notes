@@ -1,5 +1,4 @@
-
-#### Kaggle 准备
+## Kaggle 准备
 
 1.安装`Anaconda`
 
@@ -26,8 +25,27 @@ conda config --set auto_activate_base false
 >5.数据特征工程思路：EDA、特征选择、特征组合、特征分割……<br>
 >6.算法的选择
 
-#### 数据探索
+#### 数据清洗
 
-```python
+>Data cleaning is the process of detecting and correcting (or removing) corrupt or inaccurate records from a record set, table, or database and refers to identifying incomplete, incorrect, inaccurate or irrelevant parts of the data and then replacing, modifying, or deleting the dirty or coarse data.
 
-```
+**方法**
+
+1. 解决缺失值：平均值、最大值、最小值或者概率估计
+2. 去重：合并相同的记录
+3. 解决错误值：
+    + 用统计方法识别可能的错误值或异常值
+    + 用简单的规则库检查数据值
+    + 使用不同属性间的约束、外部的数据清理数据
+4. 解决数据的不一致性：类别型、次序型数据
+
+**场景**
+
+1. 删除多列
+2. 更改数据类型
+3. 将分类变量变为数字变量
+4. 检查缺失值
+5. 删除字符串
+6. 删除空格
+7. 字符串连接两列
+8. 转换时间戳
