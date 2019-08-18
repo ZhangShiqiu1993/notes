@@ -15,15 +15,15 @@ train.head()
 import pandas_profiling as ppf
 ppf.ProfileReport(train) 
 ```
-![](./assets/1.png)
-![](./assets/2.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/2.%E6%9E%84%E5%BB%BAbaseline/assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/2.%E6%9E%84%E5%BB%BAbaseline/assets/2.png)
 
 使用**箱型图**查看**异常值**
 ```python
 plt.figure(figsize=(15,8))
 sns.boxplot(train.YearBuilt, train.SalePrice)
 ```
-![](./assets/3.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/2.%E6%9E%84%E5%BB%BAbaseline/assets/3.png)
 
 使用**散点图**用于观察是否存在**线性关系**
 ```python
@@ -33,7 +33,7 @@ plt.xlabel("GrLivArea", fontsize=13)
 plt.ylabel("SalePrice", fontsize=13)
 # plt.ylim(0,800000)
 ```
-![](./assets/4.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/2.%E6%9E%84%E5%BB%BAbaseline/assets/4.png)
 删除图中右下角有两个异常点
 ```python
 outlier = train[(train.GrLivArea > 4000) & (train.SalePrice < 300000)]
