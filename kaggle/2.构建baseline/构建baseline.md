@@ -44,38 +44,36 @@ train.drop(outlier.index, inplace=True)
 
 ```python
 miss = full.isnull().sum()#统计出空值的个数
-miss[miss>0].sort_values()
+miss[miss > 0].sort_values()
 ```
 
-1. 空值的填充与删除
+1. **缺失值/空值**的填充与删除
     + 对于字符
         + 用`None`填充
     + 数值：
         + 均值填充
         + 众数填充 `full["MSZoning"].mode()[0]`
-2. 数据预处理:字符变成数值型
-    + 将一些数字特征转换为类别特征。使用`LabelEncoder`和`get_dummies`来
+    + *如何选择处理方式，选均值or众数？正确的方法应该都试一下，然后根据validation结果进行选择*
+2. 数据预处理:字符变成数值型，归一化，标准化...
+    + 使用`StandardScaler`、`Normalizer`、`MinMaxScaler`、`LabelBinarizer`、`LabelEncoder`、`OneHotEncoder`和`get_dummies`等
     ```python
     from sklearn.preprocessing import LabelEncoder
-    #################
-    full2 = pd.get_dummies(full)##独热编码
+    pd.get_dummies(full)##独热编码
     ```
     + *我一般用`sklearn`的`LabelEncoder`和`OneHotEncoder`, `pd.get_dummies`还是倒是头一次遇上*
 
+3.异常值的处理
+    + 箱型图
+    + 散点图
 
+4.模型的构建
 
-使用
-```python
-from sklearn.preprocessing import RobustScaler,StandardScaler
-```
-
-使用
 ```python
 from sklearn.linear_model import LinearRegression#导入模型
 ```
 
+5.模型训练好了后就对test进行预测 & 提交结果
 
-使用
 ```python
-result.to_csv("submission1.csv",index=False
+result.to_csv("baseline.csv",index=False
 ```
