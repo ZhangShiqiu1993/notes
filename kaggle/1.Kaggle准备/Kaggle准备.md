@@ -12,6 +12,32 @@
 conda config --set auto_activate_base false
 ```
 
+**修改默认配置**
+
+使用下面这条命令，生成一个配置文件
+```bash
+jupyter notebook --generate-config
+```
+mac下，配置文件的路径为`~/.jupyter/jupyter_notebook_config.py`
+
+公司电脑上有权限管理，所以我需要在服务器上安装`jupyter`再通过`http`登录。那么修改`jupyter_notebook_config.py`文件.
+
+首先允许所有IP访问`jupyter server`, 默认只允许`localhost`访问
+```python
+c.NotebookApp.ip = '*'
+```
+
+对于`5.3`之后的`jupyter notebook`，这时候打开会要求输入密码
+![](./assets/1.png)
+
+使用下面这条命令，配置密码
+```bash
+jupyter notebook password
+```
+设定好密码之后就可以登录了。
+
+此外，`jupyter server`还允许配置`SSL/HTTPS`，[相关文档参考此处](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html)。
+
 2.注册Kaggle & 下载数据集
 
 #### 思路
