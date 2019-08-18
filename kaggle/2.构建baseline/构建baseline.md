@@ -77,3 +77,5 @@ from sklearn.linear_model import LinearRegression#导入模型
 ```python
 result.to_csv("baseline.csv",index=False
 ```
+
+直接使用`sklearn`的`LinearRegression`作为`baseline`, 排名应该在3k之后。所以接下来要开始做特征工程
