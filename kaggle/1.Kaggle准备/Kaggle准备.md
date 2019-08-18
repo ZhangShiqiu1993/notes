@@ -28,7 +28,7 @@ c.NotebookApp.ip = '*'
 ```
 
 对于`5.3`之后的`jupyter notebook`，这时候打开会要求输入密码
-![](./assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/1.Kaggle%E5%87%86%E5%A4%87/assets/1.png)
 
 使用下面这条命令，配置密码
 ```bash
