@@ -8,12 +8,12 @@
    + `b`称为`gossip fan-out`，默认为2
    + 同一个`receiver`可以被反复选中
 
-![](./assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/12.Gossip%20Protocol/assets/1.png)
 
-2. 一旦`receiver`收到消息，`receiver`被称为**gossip感染**
+1. 一旦`receiver`收到消息，`receiver`被称为**gossip感染**
    + 被感染的`receiver`会开始跟`sender`一样的行为，每5s随机挑选`b`个`receiver`发送gossip
    + 某些`receiver`可能被不同的`sender`同时挑中，反手接收同样的`gossip` *但是带来的网络开销并不大*
-![](./assets/2.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/cloud/12.Gossip%20Protocol/assets/2.png)
 
 #### Push 模型 vs. Pull 模型
 
