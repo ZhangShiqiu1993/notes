@@ -4,7 +4,7 @@
 假设我们只有一条消息和一个`sender`*此协议同样适用于多`sender`多消息的情景*。
 
 1. `sender`定期(默认5s)向随机挑选的`b`个`receiver`发送消息(`gossip message`)。
-   + `gossip message`将通过`UDP·传输
+   + `gossip message`将通过`UDP`传输
    + `b`称为`gossip fan-out`，默认为2
    + 同一个`receiver`可以被反复选中
 
