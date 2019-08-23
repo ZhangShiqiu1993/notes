@@ -1,6 +1,6 @@
 ## Gossip Protocol
 
-**Gossip协议**，又称**流行病协议**。<`b`r>
+**Gossip协议**，又称**流行病协议**。<br>
 假设我们只有一条消息和一个`sender`*此协议同样适用于多`sender`多消息的情景*。
 
 1. `sender`定期(默认5s)向随机挑选的`b`个`receiver`发送消息(`gossip message`)。
