@@ -9,7 +9,7 @@
     1. Tree-based models doesn’t depend on scaling
     2. Non-tree-based models hugely depend on scaling
 
-![](./assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/3.Feature%20preprocessing/assets/1.png)
 
 2. Most often used preprocessings are:
     1. MinMaxScaler - to [0,1]
@@ -28,13 +28,13 @@ order
 2. Label encoding maps categories to numbers
 3. Frequency encoding maps categories to their frequencies
 
-![](./assets/2.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/3.Feature%20preprocessing/assets/2.png)
 
 4. Label and Frequency encodings are often used for treebased models
 5. One-hot encoding is often used for non-tree-based models
 6. Interactions of categorical features can help linear models and KNN
 
-![](./assets/3.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/3.Feature%20preprocessing/assets/3.png)
 
 ### Datetime 
 
@@ -49,7 +49,7 @@ order
     + datetime_feature_1 - datetime_feature_2
 
 ### Coordinates
-![](./assets/4.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/3.Feature%20preprocessing/assets/4.png)
 
 1. Additional data <br>
 + 插入额外数据。比如原始数据包含了某个房子的地理位置，我们额外插入医院、学校、购物中心、地铁站的位置，并算出距离
@@ -67,4 +67,4 @@ order
 
 5. Rotate 旋转地图坐标
 
-![](./assets/5.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/kaggle/3.Feature%20preprocessing/assets/5.png)
