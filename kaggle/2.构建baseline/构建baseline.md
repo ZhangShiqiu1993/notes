@@ -63,8 +63,8 @@ miss[miss > 0].sort_values()
     + *我一般用`sklearn`的`LabelEncoder`和`OneHotEncoder`, `pd.get_dummies`还是倒是头一次遇上*
 
 3.异常值的处理
-    + 箱型图
-    + 散点图
++ 箱型图
++ 散点图
 
 4.模型的构建
 
