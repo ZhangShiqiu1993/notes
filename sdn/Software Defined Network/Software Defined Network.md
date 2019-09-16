@@ -17,7 +17,7 @@
 
 *就是这种东西*
 
-![](./assets/1.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/sdn/Software%20Defined%20Network/assets/1.png)
 
 `Cisco IOS`提供多种特性，版本12.3之后各种特性的组合被打包成了特性集。从C2900到C6500，不同特性集会被提供给不同型号的产品，以交换机为例，默认都会加载`Layer 2 Base Package`, 多层交换机会加载`IP Base Package`, 核心层设备会加载`Advanced Enterprise Services Package`。
 
@@ -45,10 +45,8 @@ B4 (Beyond Backend BackBone)诞生于2010年，使用至今。承载production n
 
 谷歌的网络设备提供商主要为：Cisco, Juniper, Arista 三家 (三家均广告上证实自己是谷歌供应商)。
 
-|右上角三家||
-|--|--|
-|![](./assets/2.png)|![](./assets/3.png)|
-
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/sdn/Software%20Defined%20Network/assets/2.png)
+![](https://github.com/ZhangShiqiu1993/notes/raw/master/sdn/Software%20Defined%20Network/assets/3.png)
 
 Google自B4开始使用自研设备，思路上与云基础设施相同，将数据层和控制层分离，使用大量的廉价设备负责转发，用中心控制器负责路由，以此代替高价的特制设备, 摆脱了厂商的控制。
 
