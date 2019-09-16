@@ -33,7 +33,7 @@
 
 **B1 / B2**
 
-B2(BackBone) 是Google早期的网络基础架构，至今仍在使用，承载production traffic(所有高优先级流量, 包括面向用户），并且连接Google Data Center很Edge Caches.
+B2(BackBone) 是Google早期的网络基础架构，至今仍在使用，承载production traffic(所有高优先级流量, 包括面向用户），并且连接Google Data Center和Edge Caches.
 
 **B3**
 
