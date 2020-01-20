@@ -313,7 +313,7 @@ public interface ResourceLoader {
 ### 2.1 子类结构
 作为 Spring 统一的资源加载器，它提供了统一的抽象，具体的实现则由相应的子类来负责实现，其类的类结构图如下：
 
-![ResourceLoader 类图](assets/ResourceLoader类图.png)
+![ResourceLoader 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/2.Spring%20统一资源加载策略/assets/ResourceLoader类图.png)
 
 ### 2.1 DefaultResourceLoader
 与 AbstractResource 相似，`org.springframework.core.io.DefaultResourceLoader` 是 ResourceLoader 的默认实现。
@@ -500,7 +500,7 @@ private static class FileSystemContextResource extends FileSystemResource implem
 + 为什么要有 FileSystemContextResource 类的原因是，实现 ContextResource 接口，并实现对应的 `#getPathWithinContext()` 接口方法。
 
 #### 2.2.2 示例
-在回过头看 [2.1.4 示例](#2-1-4-示例) ，如果将 DefaultResourceLoader 改为 FileSystemResourceLoader ，则 fileResource1 则为 FileSystemResource 类型的资源。
+在回过头看 [2.1.4 示例](#214-示例) ，如果将 DefaultResourceLoader 改为 FileSystemResourceLoader ，则 fileResource1 则为 FileSystemResource 类型的资源。
 
 2.3 ClassRelativeResourceLoader
 org.springframework.core.io.ClassRelativeResourceLoader ，是 DefaultResourceLoader 的另一个子类的实现。和 FileSystemResourceLoader 类似，在实现代码的结构上类似，也是覆写 #getResourceByPath(String path) 方法，并返回其对应的 ClassRelativeContextResource 的资源类型。
