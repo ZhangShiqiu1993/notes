@@ -72,7 +72,7 @@ public class YoungMan {
 
 诚然，作为婚介公司的 IoC 帮我们省略了找女朋友的繁杂过程，将原来的主动寻找变成了现在的被动接受，更加简洁轻便。你想啊，原来你还得鞍马前后，各种巴结，什么东西都需要自己去亲力亲为，现在好了，直接有人把现成的送过来，多么美妙的事情啊。所以，简单点说，IoC 的理念就是**让别人为你服务**，如下图（摘自Spring揭秘）：
 
-![IOC](/uploads/Spring-IOC/1IOC.jpg)
+![IOC](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/1IOC.jpg)
 
 在没有引入 IoC 的时候，被注入的对象直接依赖于被依赖的对象，有了 IoC 后，两者及其他们的关系都是通过 Ioc Service Provider 来统一管理维护的。被注入的对象需要什么，直接跟 IoC Service Provider 打声招呼，后者就会把相应的被依赖对象注入到被注入的对象中，从而达到 IoC Service Provider 为被注入对象服务的目的。**所以 IoC 就是这么简单！原来是需要什么东西自己去拿，现在是需要什么东西让别人（IoC Service Provider）送过来**
 
@@ -139,7 +139,7 @@ public class YoungMan {
 ## 2. 各个组件
 先看下图（摘自:http://singleant.iteye.com/blog/1177358）
 
-![组件类图](/uploads/Spring-IOC/2组件类图.jpg)
+![组件类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/2组件类图.jpg)
 
 
 该图为 ClassPathXmlApplicationContext 的类继承体系结构，虽然只有一部分，但是它基本上包含了 IoC 体系中大部分的核心类和接口。
@@ -149,17 +149,17 @@ public class YoungMan {
 ### 2.1 Resource 体系
 `org.springframework.core.io.Resource`，对资源的抽象。它的每一个实现类都代表了一种资源的访问策略，如 ClassPathResource、RLResource、FileSystemResource 等。
 
-![Resource 类图](/uploads/Spring-IOC/3Resource类图.jpg)
+![Resource 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/3Resource类图.jpg)
 
 #### 2.1.2 ResourceLoader 体系
 有了资源，就应该有资源加载，Spring 利用 `org.springframework.core.io.ResourceLoader` 来进行统一资源加载，类图如下：
 
-![ResourceLoader 类图](/uploads/Spring-IOC/4ResourceLoader.jpg)
+![ResourceLoader 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/4ResourceLoader.jpg)
 
 ### 2.2 BeanFactory 体系
 `org.springframework.beans.factory.BeanFactory`，是一个非常纯粹的 bean 容器，它是 IoC 必备的数据结构，其中 BeanDefinition 是它的基本结构。BeanFactory 内部维护着一个BeanDefinition map ，并可根据 BeanDefinition 的描述进行 bean 的创建和管理。
 
-![BeanFactory 类图](/uploads/Spring-IOC/5BeanFactory类图.jpg)
+![BeanFactory 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/5BeanFactory类图.jpg)
 
 + BeanFactory 有三个直接子类 ListableBeanFactory、HierarchicalBeanFactory 和 AutowireCapableBeanFactory 。
 + DefaultListableBeanFactory 为最终默认实现，它实现了所有接口。
@@ -167,12 +167,12 @@ public class YoungMan {
 ### 2.3 BeanDefinition 体系
 `org.springframework.beans.factory.config.BeanDefinition` ，用来描述 Spring 中的 Bean 对象。
 
-![BeanDefinition 类图](/uploads/Spring-IOC/6BeanDefinition类图.jpg)
+![BeanDefinition 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/6BeanDefinition类图.jpg)
 
 ### 2.4 BeanDefinitionReader 体系
 `org.springframework.beans.factory.support.BeanDefinitionReader` 的作用是读取 Spring 的配置文件的内容，并将其转换成 Ioc 容器内部的数据结构 ：BeanDefinition 。
 
-![BeanDefinitionReader 类图](/uploads/Spring-IOC/7BeanDefinitionReader类图.jpg)
+![BeanDefinitionReader 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/7BeanDefinitionReader类图.jpg)
 
 ### 2.5 ApplicationContext 体系
 `org.springframework.context.ApplicationContext` ，这个就是大名鼎鼎的 Spring 容器，它叫做应用上下文，与我们应用息息相关。它继承 BeanFactory ，所以它是 BeanFactory 的扩展升级版，如果BeanFactory 是屌丝的话，那么 ApplicationContext 则是名副其实的高富帅。由于 ApplicationContext 的结构就决定了它与 BeanFactory 的不同，其主要区别有：
@@ -185,7 +185,7 @@ public class YoungMan {
 
 下图来源：https://blog.csdn.net/yujin753/article/details/47043143
 
-![ApplicationContext 类图](/uploads/Spring-IOC/8ApplicationContext类图.jpg)
+![ApplicationContext 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/1.Spring%20IoC/assets/8ApplicationContext类图.jpg)
 
 ### 2.6 小结
 通过上面五个体系，我们可以看出，IoC 主要由 `spring-beans` 和 `spring-context` 项目，进行实现。
