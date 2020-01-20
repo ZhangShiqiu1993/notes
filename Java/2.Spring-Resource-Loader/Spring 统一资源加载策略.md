@@ -95,7 +95,7 @@ public interface Resource extends InputStreamSource {
 ### 1.1 子类结构
 类结构图如下：
 
-![Resource类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/2.Spring-Resource-Loader/assets/Resource类图.png)
+![Resource类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/2.Spring-Resource-Loader/assets/Resource.png)
 
 从上图可以看到，Resource 根据资源的不同类型提供不同的具体实现，如下：
 
@@ -313,7 +313,7 @@ public interface ResourceLoader {
 ### 2.1 子类结构
 作为 Spring 统一的资源加载器，它提供了统一的抽象，具体的实现则由相应的子类来负责实现，其类的类结构图如下：
 
-![ResourceLoader 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/2.Spring-Resource-Loader/assets/ResourceLoader类图.png)
+![ResourceLoader 类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/2.Spring-Resource-Loader/assets/ResourceLoader.png)
 
 ### 2.2 DefaultResourceLoader
 与 AbstractResource 相似，`org.springframework.core.io.DefaultResourceLoader` 是 ResourceLoader 的默认实现。
