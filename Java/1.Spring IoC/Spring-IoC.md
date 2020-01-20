@@ -1,7 +1,4 @@
----
-title: "Spring IoC"
-published: true
----
+# Spring IoC
 
 *芋道源码学习笔记*
 
