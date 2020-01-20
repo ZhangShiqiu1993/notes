@@ -94,7 +94,6 @@ public interface Resource extends InputStreamSource {
 
 ### 1.1 子类结构
 类结构图如下：
-![](https://github.com/ZhangShiqiu1993/notes/raw/master/sdn/1.%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%8E%A7%E5%88%B6%E5%88%86%E7%A6%BB/assets/4.png)
 
 ![Resource类图](https://github.com/ZhangShiqiu1993/notes/blob/master/Java/2.Spring-Resource-Loader/assets/Resource.png)
 
