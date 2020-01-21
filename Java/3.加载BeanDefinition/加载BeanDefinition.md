@@ -14,7 +14,7 @@ reader.loadBeanDefinitions(resource); // <4>
 
 整个过程就分为三个步骤：资源定位、装载、注册，如下：
 
-![整体步骤](assets/1.png)
+![整体步骤](https://github.com/ZhangShiqiu1993/notes/raw/master/Java/3.%E5%8A%A0%E8%BD%BDBeanDefinition/assets/1.png)
 
 + **资源定位**。我们一般用外部资源来描述 Bean 对象，所以在初始化 IoC 容器的第一步就是需要定位这个外部资源。在Spring 统一资源加载策略》已经详细说明了资源加载的过程。
 + **装载**。装载就是 BeanDefinition 的载入。BeanDefinitionReader 读取、解析 Resource 资源，也就是将用户定义的 Bean 表示成 IoC 容器的内部数据结构：BeanDefinition 。
