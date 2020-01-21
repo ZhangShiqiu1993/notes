@@ -242,6 +242,6 @@ public XmlReaderContext createReaderContext(Resource resource) {
 ## 4. 小结
 `XmlBeanDefinitionReader#doLoadBeanDefinitions(InputSource inputSource, Resource resource)` 方法，整体时序图如下：
 
-![时序图](assets/01.jpg)
+![时序图](https://github.com/ZhangShiqiu1993/notes/raw/master/Java/4.%E6%B3%A8%E5%86%8CBeanDefinitions/assets/01.jpg)
 
 红框部分，就是 **BeanDefinition 的解析过程**。
