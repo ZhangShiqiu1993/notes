@@ -236,13 +236,13 @@ public interface EntityResolver {
   + publicId：null
   + systemId：http://www.springframework.org/schema/beans/spring-beans.xsd
 
-![XSD 验证模式](./assets/1.jpg)
+![XSD 验证模式](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Spring/6.%E8%8E%B7%E5%8F%96%20Document%20%E5%AF%B9%E8%B1%A1/assets/1.jpg)
 
 + DTD 验证模式
   + publicId：-//SPRING//DTD BEAN 2.0//EN
   + systemId：http://www.springframework.org/dtd/spring-beans.dtd
 
-![DTD 验证模式](./assets/2.jpg)
+![DTD 验证模式](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Spring/6.%E8%8E%B7%E5%8F%96%20Document%20%E5%AF%B9%E8%B1%A1/assets/2.jpg)
 
 ### 2.3 DelegatingEntityResolver
 我们知道在 Spring 中使用 DelegatingEntityResolver 为 EntityResolver 的实现类。`#resolveEntity(String publicId, String systemId)` 方法，实现如下：
@@ -406,7 +406,7 @@ private Map<String, String> getSchemaMappings() {
 ```
 映射表如下（**部分**）:
 
-![映射表](./assets/3.jpg)
+![映射表](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Spring/6.%E8%8E%B7%E5%8F%96%20Document%20%E5%AF%B9%E8%B1%A1/assets/3.jpg)
 
 + 然后，根据传入的 `systemId` 获取该 `systemId` 在本地的路径 `resourceLocation` 。
 + 最后，根据 `resourceLocation` ，构造 InputSource 对象。
@@ -495,7 +495,7 @@ public class MyResolver implements EntityResolver {
 
 如果我们再次运行，则会报如下错误：
 
-![报错](./assets/5.jpg)
+![报错](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Spring/6.%E8%8E%B7%E5%8F%96%20Document%20%E5%AF%B9%E8%B1%A1/assets/5.jpg)
 
 从上面的错误可以看到，是在进行文档验证时，无法根据声明找到 XSD 验证文件而导致无法进行 XML 文件验证。如果要解析一个 XML 文件，SAX 首先会读取该 XML 文档上的声明，然后根据声明去寻找相应的 DTD 定义，以便对文档进行验证。默认的加载规则是通过网络方式下载验证文件，而在实际生产环境中我们会遇到网络中断或者不可用状态，那么就应用就会因为无法下载验证文件而报错。
 
