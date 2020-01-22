@@ -167,7 +167,7 @@ protected Document doLoadDocument(InputSource inputSource, Resource resource) th
 ```
 
 1. 调用 `#getValidationModeForResource(Resource resource)` 方法，获取指定资源（xml）的**验证模式**。
-2. 调用 1DocumentLoader#loadDocument(InputSource inputSource, EntityResolver entityResolver, ErrorHandler errorHandler, int validationMode, boolean namespaceAware)1 方法，获取 XML Document 实例。
+2. 调用 `DocumentLoader#loadDocument(InputSource inputSource, EntityResolver entityResolver, ErrorHandler errorHandler, int validationMode, boolean namespaceAware)` 方法，获取 XML Document 实例。
    
 ### 2.2 registerBeanDefinitions
 见《注册 BeanDefinitions》
