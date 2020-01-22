@@ -1,4 +1,5 @@
 获取 XML Document 对象后，会根据该对象和 Resource 资源对象调用 `XmlBeanDefinitionReader#registerBeanDefinitions(Document doc, Resource resource)` 方法，开始注册 BeanDefinitions 。代码如下：
+
 ```java
 // AbstractBeanDefinitionReader.java
 private final BeanDefinitionRegistry registry;
@@ -16,6 +17,7 @@ public int registerBeanDefinitions(Document doc, Resource resource) throws BeanD
 	return getRegistry().getBeanDefinitionCount() - countBefore;
 }
 ```
+
 + `<1>` 处，调用 `#createBeanDefinitionDocumentReader()` 方法，实例化 BeanDefinitionDocumentReader 对象。
 >FROM 《Spring 源码深度解析》P16 页
 >
@@ -28,6 +30,7 @@ public int registerBeanDefinitions(Document doc, Resource resource) throws BeanD
 
 ## 1. createBeanDefinitionDocumentReader
 `#createBeanDefinitionDocumentReader()`，实例化 BeanDefinitionDocumentReader 对象。代码如下：
+
 ```java
 /**
  * documentReader 的类
@@ -40,10 +43,12 @@ protected BeanDefinitionDocumentReader createBeanDefinitionDocumentReader() {
 	return BeanUtils.instantiateClass(this.documentReaderClass);
 }
 ```
+
 + `documentReaderClass` 的默认值为 `DefaultBeanDefinitionDocumentReader.class` 。关于它，我们在后续的文章，详细解析。
 
 ## 2. registerBeanDefinitions
 `BeanDefinitionDocumentReader#registerBeanDefinitions(Document doc, XmlReaderContext readerContext)` 方法，注册 BeanDefinition ，在接口 BeanDefinitionDocumentReader 中定义。代码如下：
+
 ```java
 public interface BeanDefinitionDocumentReader {
 
@@ -60,6 +65,7 @@ public interface BeanDefinitionDocumentReader {
 
 }
 ```
+
 从给定的 Document 对象中解析定义的 BeanDefinition 并将他们注册到注册表中。方法接收两个参数：
 
 + `doc` 方法参数：待解析的 Document 对象。
@@ -69,6 +75,7 @@ public interface BeanDefinitionDocumentReader {
 BeanDefinitionDocumentReader 有且只有一个默认实现类 DefaultBeanDefinitionDocumentReader 。它对 `#registerBeanDefinitions(...)` 方法的实现代码如下：
 
 DefaultBeanDefinitionDocumentReader 对该方法提供了实现：
+
 ```java
 @Nullable
 private XmlReaderContext readerContext;
@@ -137,12 +144,14 @@ protected void doRegisterBeanDefinitions(Element root) {
     this.delegate = parent;
 }
 ```
+
 + `<1>` 处，创建 BeanDefinitionParserDelegate 对象，并进行设置到 `delegate` 。BeanDefinitionParserDelegate 是一个重要的类，它负责**解析 BeanDefinition**。代码如下：
 
 
 >FROM 《Spring 源码深度解析》P16
 >
 >定义解析 XML Element 的各种方法
+
 ```java
 protected BeanDefinitionParserDelegate createDelegate(
         XmlReaderContext readerContext, Element root, @Nullable BeanDefinitionParserDelegate parentDelegate) {
@@ -153,20 +162,24 @@ protected BeanDefinitionParserDelegate createDelegate(
     return delegate;
 }
 ```
+
 + `<2>` 处，检查 `<beans />` **根**标签的命名空间是否为空，或者是 http://www.springframework.org/schema/beans 。
   + `<2.1>` 处，判断是否 `<beans />` 上配置了 `profile` 属性
   + `<2.2>` 处，使用分隔符切分，可能有**多个** profile 。
   + `<2.3>` 处，判断，如果所有 profile 都无效，则 `return` 不进行注册。
 + `<4>` 处，调用 `#parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate)` 方法，进行解析逻辑 [3.1 parseBeanDefinitions](31-parseBeanDefinitions) 。
 + `<3>` / `<5>` 处，解析**前后**的处理，目前这两个方法都是空实现，交由子类来实现。代码如下：
+
 ```java
 protected void preProcessXml(Element root) {}
 
 protected void postProcessXml(Element root) {}
 ```
 
+
 #### 2.1.1 parseBeanDefinitions
 `#parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate)` 方法，进行解析逻辑。代码如下：
+
 ```java
 /**
  * Parse the elements at the root level in the document:
@@ -197,11 +210,13 @@ protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate d
     }
 }
 ```
+
 + Spring 有两种 Bean 声明方式：
   + 配置文件式声明：`<bean id="studentService" class="org.springframework.core.StudentService" />` 。对应 `<1>` 处。
   + 自定义注解方式：`<tx:annotation-driven>` 。对应 `<2>` 处。
     
 + `<1>` 处，如果根节点或子节点使用默认命名空间，调用 `#parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate)` 方法，执行默认解析。代码如下：
+
 ```java
 private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate) {
 	if (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) { // import
@@ -216,10 +231,12 @@ private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate deleg
 	}
 }
 ```
+
 + `<2>` 处，如果根节点或子节点不使用默认命名空间，调用 `BeanDefinitionParserDelegate#parseCustomElement(Element ele)` 方法，执行自定义解析。详细的解析，见后续文章。
 
 ## 3. createReaderContext
 `#createReaderContext(Resource resource)` 方法，创建 XmlReaderContext 对象。代码如下：
+
 ```java
 private ProblemReporter problemReporter = new FailFastProblemReporter();
 
@@ -238,6 +255,7 @@ public XmlReaderContext createReaderContext(Resource resource) {
 			this.sourceExtractor, this, getNamespaceHandlerResolver());
 }
 ```
+
 
 ## 4. 小结
 `XmlBeanDefinitionReader#doLoadBeanDefinitions(InputSource inputSource, Resource resource)` 方法，整体时序图如下：

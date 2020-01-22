@@ -12,6 +12,7 @@
 >
 >定义从资源文件加载到转换为 Document 的功能。
 
+
 ```java
 public interface DocumentLoader {
 
@@ -23,6 +24,7 @@ public interface DocumentLoader {
 }
 ```
 
+
 + `inputSource` 方法参数，加载 Document 的 Resource 资源。
 + `entityResolver` 方法参数，解析文件的解析器。
 + `errorHandler` 方法参数，处理加载 Document 对象的过程的错误。
@@ -31,6 +33,7 @@ public interface DocumentLoader {
   
 ## 1.1 DefaultDocumentLoader
 该方法由 DocumentLoader 的默认实现类 `org.springframework.beans.factory.xml.DefaultDocumentLoader` 实现。代码如下：
+
 ```java
 /**
  * Load the {@link Document} at the supplied {@link InputSource} using the standard JAXP-configured
@@ -50,7 +53,9 @@ public Document loadDocument(InputSource inputSource, EntityResolver entityResol
 	return builder.parse(inputSource);
 }
 ```
+
 + 首先，调用 `#createDocumentBuilderFactory(...)` 方法，创建 `javax.xml.parsers.DocumentBuilderFactory` 对象。代码如下：
+
 ```java
 /**
  * JAXP attribute used to configure the schema language for validation.
@@ -87,7 +92,9 @@ protected DocumentBuilderFactory createDocumentBuilderFactory(int validationMode
     return factory;
 }
 ```
+
 然后，调用 `#createDocumentBuilder(DocumentBuilderFactory factory, EntityResolver entityResolver,ErrorHandler errorHandler)` 方法，创建 `javax.xml.parsers.DocumentBuilder` 对象。代码如下：
+
 ```java
 protected DocumentBuilder createDocumentBuilder(DocumentBuilderFactory factory,
 		@Nullable EntityResolver entityResolver, @Nullable ErrorHandler errorHandler)
@@ -105,6 +112,7 @@ protected DocumentBuilder createDocumentBuilder(DocumentBuilderFactory factory,
 	return docBuilder;
 }
 ```
+
 + 在 `<x>` 处，设置 DocumentBuilder 的 **EntityResolver 属性**。关于它，在 [2. EntityResolver](#2-EntityResolver) 会详细解析。
 + 最后，调用 `DocumentBuilder#parse(InputSource)` 方法，解析 InputSource ，返回 Document 对象。
 
@@ -112,6 +120,7 @@ protected DocumentBuilder createDocumentBuilder(DocumentBuilderFactory factory,
 通过 `DocumentLoader#loadDocument(...)` 方法来获取 Document 对象时，有一个方法参数 `entityResolver` 。该参数是通过 `XmlBeanDefinitionReader#getEntityResolver()` 方法来获取的。代码如下：
 
 >`#getEntityResolver()` 方法，返回指定的解析器，如果没有指定，则构造一个未指定的默认解析器。
+
 
 ```java
 // XmlBeanDefinitionReader.java
@@ -135,6 +144,7 @@ protected EntityResolver getEntityResolver() {
 	return this.entityResolver;
 }
 ```
+
 + 如果 ResourceLoader 不为 `null`，则根据指定的 ResourceLoader 创建一个 ResourceEntityResolver 对象。
 + 如果 ResourceLoader 为 `null` ，则创建 一个 DelegatingEntityResolver 对象。该 Resolver 委托给默认的 BeansDtdResolver 和 PluggableSchemaResolver 。
 
@@ -143,12 +153,15 @@ protected EntityResolver getEntityResolver() {
 
 + `org.springframework.beans.factory.xm.BeansDtdResolver` ：实现 EntityResolver 接口，Spring Bean dtd 解码器，用来从 classpath 或者 jar 文件中加载 dtd 。部分代码如下：
 
+
 ```java
 private static final String DTD_EXTENSION = ".dtd";
 
 private static final String DTD_NAME = "spring-beans";
 ```
+
 + `org.springframework.beans.factory.xml.PluggableSchemaResolver` ，实现 EntityResolver 接口，读取 classpath 下的所有 `"META-INF/spring.schemas"` 组成一个 namespaceURI 与 Schema 文件地址的 map 。代码如下：
+
 ```java
 /**
  * The location of the file that defines schema mappings.
@@ -170,7 +183,9 @@ private final String schemaMappingsLocation;
 @Nullable
 private volatile Map<String, String> schemaMappings; // namespaceURI 与 Schema 文件地址的映射集合
 ```
+
 + `org.springframework.beans.factory.xml.DelegatingEntityResolver` ：实现 EntityResolver 接口，分别代理 dtd 的 BeansDtdResolver 和 xml schemas 的 PluggableSchemaResolver 。代码如下：
+
 ```java
 /** Suffix for DTD files. */
 public static final String DTD_SUFFIX = ".dtd";
@@ -196,7 +211,9 @@ public DelegatingEntityResolver(EntityResolver dtdResolver, EntityResolver schem
 	this.schemaResolver = schemaResolver;
 }
 ```
+
 + `org.springframework.beans.factory.xml.ResourceEntityResolver` ：继承自 DelegatingEntityResolver 类，通过 ResourceLoader 来解析实体的引用。代码如下：
+
 ```java
 private final ResourceLoader resourceLoader;
 
@@ -205,6 +222,7 @@ public ResourceEntityResolver(ResourceLoader resourceLoader) {
 	this.resourceLoader = resourceLoader;
 }
 ```
+
 
 ### 2.2 作用
 
@@ -217,6 +235,7 @@ public ResourceEntityResolver(ResourceLoader resourceLoader) {
 >EntityResolver 的作用是项目本身就可以提供一个如何寻找 DTD 声明的方法，即由程序来实现寻找 DTD 声明的过程，比如我们将 DTD 文件放到项目中某处，在实现时直接将此文档读取并返回给 SAX 即可。这样就避免了通过网络来寻找相应的声明。
 
 `org.xml.sax.EntityResolver` 接口，代码如下：
+
 ```java
 public interface EntityResolver {
 
@@ -225,6 +244,7 @@ public interface EntityResolver {
 
 }
 ```
+
 接口方法接收两个参数 `publicId` 和 `systemId` ，并返回 InputSource 对象。两个参数声明如下：
 
 + `publicId` ：被引用的外部实体的公共标识符，如果没有提供，则返回 `null` 。
@@ -246,6 +266,7 @@ public interface EntityResolver {
 
 ### 2.3 DelegatingEntityResolver
 我们知道在 Spring 中使用 DelegatingEntityResolver 为 EntityResolver 的实现类。`#resolveEntity(String publicId, String systemId)` 方法，实现如下：
+
 ```java
 @Override
 @Nullable
@@ -262,11 +283,13 @@ public InputSource resolveEntity(String publicId, @Nullable String systemId) thr
 	return null;
 }
 ```
+
 + 如果是 DTD 验证模式，则使用 BeansDtdResolver 来进行解析
 + 如果是 XSD 验证模式，则使用 PluggableSchemaResolver 来进行解析。
 
 ### 2.4 BeansDtdResolver
 BeansDtdResolver 的解析过程，代码如下：
+
 ```java
 /**
  * DTD 文件的后缀
@@ -321,10 +344,12 @@ public InputSource resolveEntity(String publicId, @Nullable String systemId) thr
 }
 ```
 
+
 从上面的代码中，我们可以看到，加载 DTD 类型的 `BeansDtdResolver#resolveEntity(...)` 过程，只是对 `systemId` 进行了简单的校验（从最后一个 / 开始，内容中是否包含 `spring-beans`），然后构造一个 InputSource 对象，并设置 `publicId`、`systemId` 属性，然后返回。
 
 ### 2.5 PluggableSchemaResolver
 PluggableSchemaResolver 的解析过程，代码如下:
+
 ```java
 @Nullable
 private final ClassLoader classLoader;
@@ -372,7 +397,9 @@ public InputSource resolveEntity(String publicId, @Nullable String systemId) thr
     return null;
 }
 ```
+
 首先调用 `#getSchemaMappings()` 方法，获取一个映射表(systemId 与其在本地的对照关系)。代码如下：
+
 ```java
 private Map<String, String> getSchemaMappings() {
     Map<String, String> schemaMappings = this.schemaMappings;
@@ -404,6 +431,7 @@ private Map<String, String> getSchemaMappings() {
     return schemaMappings;
 }
 ```
+
 映射表如下（**部分**）:
 
 ![映射表](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Spring/6.%E8%8E%B7%E5%8F%96%20Document%20%E5%AF%B9%E8%B1%A1/assets/3.jpg)
@@ -413,6 +441,7 @@ private Map<String, String> getSchemaMappings() {
 
 ### 2.6 ResourceEntityResolver
 ResourceEntityResolver 的解析过程，代码如下:
+
 ```java
 private final ResourceLoader resourceLoader;
 
@@ -461,6 +490,7 @@ public InputSource resolveEntity(String publicId, @Nullable String systemId) thr
     return source;
 }
 ```
+
 + 首先，调用**父类**的方法，进行解析。
 + 如果失败，使用 `resourceLoader` ，尝试读取 `systemId` 对应的 Resource 资源。
 
@@ -473,6 +503,7 @@ public InputSource resolveEntity(String publicId, @Nullable String systemId) thr
 >就是说：如果 SAX 应用程序需要实现自定义处理外部实体，则必须实现此接口，并使用 `#setEntityResolver(EntityResolver entityResolver)` 方法，向 SAX 驱动器注册一个 EntityResolver 实例。
 
 示例如下：
+
 ```java
 public class MyResolver implements EntityResolver {
 
@@ -489,6 +520,7 @@ public class MyResolver implements EntityResolver {
 
 }
 ```
+
 我们首先将 "spring-student.xml" 文件中的 XSD 声明的地址改掉，如下：
 
 ![spring-student.xml](assets/4.jpg)
