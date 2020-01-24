@@ -122,7 +122,7 @@ public interface BeanMetadataElement {
 ### 1.2 BeanDefinition 的子关系
 BeanDefinition 子关系，结构如下图：
 
-![类图](assets/1.jpg)
+![类图](https://github.com/ZhangShiqiu1993/notes/raw/master/Spring/9.%E8%A7%A3%E6%9E%90Bean03-BeanDefinition/assets/1.jpg)
 
 我们常用的三个实现类有：
 
