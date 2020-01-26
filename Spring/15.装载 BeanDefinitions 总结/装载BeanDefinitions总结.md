@@ -1,6 +1,6 @@
 在前文提过，IoC 容器的初始化过程分为三步骤：Resource 定位、BeanDefinition 的载入和解析，BeanDefinition 注册。
 
-![整体步骤](assets/1.jpg)
+![整体步骤](https://github.com/ZhangShiqiu1993/notes/raw/master/Spring/15.%E8%A3%85%E8%BD%BD%20BeanDefinitions%20%E6%80%BB%E7%BB%93/assets/1.jpg)
 
 + **Resource 定位**。我们一般用外部资源来描述 Bean 对象，所以在初始化 IoC 容器的第一步就是需要定位这个外部资源。《统一资源加载策略》已经详细说明了资源加载的过程。
 + **BeanDefinition 的装载和解析**。装载就是 BeanDefinition 的载入。BeanDefinitionReader 读取、解析 Resource 资源，也就是将用户定义的 Bean 表示成 IoC 容器的内部数据结构：BeanDefinition 。
@@ -376,7 +376,7 @@ public void registerBeanDefinition(String beanName, BeanDefinition beanDefinitio
 ## 3. 小结
 至此，整个 IoC 的初始化过程就已经完成了，从 Bean 资源的定位，转换为 Document 对象，接着对其进行解析，最后注册到 IoC 容器中，都已经完美地完成了。现在 IoC 容器中已经建立了整个 Bean 的配置信息，这些 Bean 可以被检索、使用、维护，他们是控制反转的基础，是后面注入 Bean 的依赖。最后用一张流程图来结束这篇总结之文。
 
-![整体流程](assets/2.jpg)
+![整体流程](https://github.com/ZhangShiqiu1993/notes/raw/master/Spring/15.%E8%A3%85%E8%BD%BD%20BeanDefinitions%20%E6%80%BB%E7%BB%93/assets/2.jpg)
 
 另外，推荐几篇不错的 Srping IoC 容器相关的博客：
 
