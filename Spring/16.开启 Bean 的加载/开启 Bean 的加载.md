@@ -1,4 +1,4 @@
-![Spring IoC 作用](assets/1.jpg)
+![Spring IoC 作用](https://github.com/ZhangShiqiu1993/notes/raw/master/Spring/16.%E5%BC%80%E5%90%AF%20Bean%20%E7%9A%84%E5%8A%A0%E8%BD%BD/assets/1.jpg)
 
 (此图参考《Spring 揭秘》)
 
