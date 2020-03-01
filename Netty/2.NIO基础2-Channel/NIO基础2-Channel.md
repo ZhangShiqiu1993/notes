@@ -1,7 +1,7 @@
 ## 1. 概述
 在 Java NIO 中，基本上所有的 IO 操作都是从 Channel 开始。数据可以从 Channel 读取到 Buffer 中，也可以从 Buffer 写到 Channel 中。如下图所示：
 
-![Buffer <=> Channel](./assets/01.png)
+![Buffer <=> Channel](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/2.NIO%E5%9F%BA%E7%A1%802-Channel/assets/01.png)
 
 ## 2. NIO Channel 对比 Java Stream
 NIO Channel **类似** Java Stream ，但又有几点不同：
