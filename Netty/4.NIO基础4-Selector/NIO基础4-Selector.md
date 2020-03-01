@@ -8,7 +8,7 @@ Selector ， 一般称为**选择器**。它是 Java NIO 核心组件中的一�
 
 下图是一个 Selector 管理三个 Channel 的示例：
 
-![Selector <=> Channel](assets/01.png)
+![Selector <=> Channel](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/4.NIO%E5%9F%BA%E7%A1%804-Selector/assets/01.png)
 
 ## 2. 优缺点
 
@@ -25,7 +25,7 @@ Selector ， 一般称为**选择器**。它是 Java NIO 核心组件中的一�
 3. Selector 类图
 Selector 在 `java.nio` 包中，被定义成**抽象类**，整体实现类图如下：
 
-![Selector 类图](assets/02.png)
+![Selector 类图](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/4.NIO%E5%9F%BA%E7%A1%804-Selector/assets/02.png)
 
 [《深入浅出NIO之Selector实现原理》](jianshu.com/p/0d497fe5484a)
 
