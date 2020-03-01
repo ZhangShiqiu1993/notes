@@ -3,7 +3,7 @@
 
 Buffer 在 `java.nio` 包中实现，被定义成**抽象类**，从而实现一组常用的方法。整体类图如下：
 
-![类图](./assets/01.png)
+![类图](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/3.NIO%E5%9F%BA%E7%A1%803-Buffer/assets/01.png)
 
 + 我们可以将 Buffer 理解为**一个数组的封装**，例如 IntBuffer、CharBuffer、ByteBuffer 等分别对应 `int[]`、`char[]`、`byte[]` 等。
 + MappedByteBuffer 用于实现内存映射文件
@@ -45,7 +45,7 @@ public abstract class Buffer {
 
 + `capacity` 属性，容量，Buffer 能容纳的数据元素的**最大值**。这一容量在 Buffer 创建时被赋值，并且**永远不能被修改**。
 + Buffer 分成**写模式**和**读模式**两种情况。如下图所示：
-![写模式 v.s. 读模式](assets/02.png)
+![写模式 v.s. 读模式](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/3.NIO%E5%9F%BA%E7%A1%803-Buffer/assets/02.png)
 
 从图中，我们可以看到，两种模式下，`position` 和 `limit` 属性分别代表不同的含义。
 + `position` 属性，位置，初始值为 0 。
