@@ -32,7 +32,7 @@ Netty 有如下几个核心组件：
 
 核心组件的高层类图如下：
 
-![高层类图](./assets/01.png)
+![高层类图](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/6.Netty%20%E7%AE%80%E4%BB%8B2-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/assets/01.png)
 
 ### 2.1 Bootstrap & ServerBootstrap
 
@@ -69,7 +69,7 @@ EventLoopGroup 是一个 EventLoop 的分组，它可以获取到一个或者多
 
 下图是 Channel、EventLoop、Thread、EventLoopGroup 之间的关系( 摘自《Netty In Action》) ：
 
-![Channel、EventLoop、Thread、EventLoopGroup](assets/02.png)
+![Channel、EventLoop、Thread、EventLoopGroup](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/6.Netty%20%E7%AE%80%E4%BB%8B2-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/assets/02.png)
 
 + 一个或多个 EventLoop ，即 EventLoopGroup : EventLoop = `1 : n` 。
 + 一个 EventLoop 在它的生命周期内，只能与一个 Thread 绑定，即 EventLoop : Thread = `1 : 1` 。
@@ -97,7 +97,7 @@ ChannelHandler 还有其它的一系列的抽象实现 Adapter ，以及一些�
 ### 2.5 ChannelPipeline
 ChannelPipeline 为 ChannelHandler 的**链**，提供了一个容器并定义了用于沿着链传播入站和出站事件流的 API 。一个数据或者事件可能会被多个 Handler 处理，在这个过程中，数据或者事件经流 ChannelPipeline ，由 ChannelHandler 处理。在这个处理过程中，一个 ChannelHandler 接收数据后处理完成后交给下一个 ChannelHandler，或者什么都不做直接交给下一个 ChannelHandler。
 
-![ChannelPipeline](assets/03.png)
+![ChannelPipeline](https://raw.githubusercontent.com/ZhangShiqiu1993/notes/master/Netty/6.Netty%20%E7%AE%80%E4%BB%8B2-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/assets/03.png)
 
 + 当一个数据流进入 ChannelPipeline 时，它会从 ChannelPipeline 头部开始，传给第一个 ChannelInboundHandler 。当第一个处理完后再传给下一个，一直传递到管道的尾部。
 + 与之相对应的是，当数据被写出时，它会从管道的尾部开始，先经过管道尾部的“最后”一个ChannelOutboundHandler ，当它处理完成后会传递给前一个 ChannelOutboundHandler 。
